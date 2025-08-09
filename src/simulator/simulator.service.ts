@@ -11,6 +11,7 @@ interface Vehicle {
 @Injectable()
 export class SimulatorService {
   private vehicles: Vehicle[] = [];
+  public timeOut: number = 3000;
 
   constructor() {
     for (let i = 1; i <= 5; i++) {
@@ -39,6 +40,6 @@ export class SimulatorService {
       });
 
       server.emit('vehicle-positions', this.vehicles);
-    }, 3000);
+    }, this.timeOut);
   }
 }
