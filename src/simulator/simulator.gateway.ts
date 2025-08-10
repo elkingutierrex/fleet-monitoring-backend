@@ -1,19 +1,24 @@
 import {
   WebSocketGateway,
   WebSocketServer,
-  OnGatewayInit,
-} from '@nestjs/websockets';
-import { Server } from 'socket.io';
-import { SimulatorService } from './simulator.service';
+} from "@nestjs/websockets";
+import { Server } from "socket.io";
+import { SimulatorService } from "./simulator.service";
+import { Interval } from "@nestjs/schedule";
 
-@WebSocketGateway({ cors: true })
-export class SimulatorGateway implements OnGatewayInit {
+@WebSocketGateway({
+  cors: { origin: "*" },
+})
+export class SimulatorGateway {
   @WebSocketServer()
   server: Server;
 
   constructor(private simulatorService: SimulatorService) {}
 
-  afterInit() {
-    this.simulatorService.start(this.server);
+  @Interval(5000)
+  sendUpdates() {
+    const vehicles = this.simulatorService.getVehicles();
+    this.server.emit("vehiclesUpdate", vehicles);
+    console.log("Emitiendo vehículos al frontend");
   }
 }

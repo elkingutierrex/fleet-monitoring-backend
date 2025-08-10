@@ -1,8 +1,10 @@
-import { Module } from '@nestjs/common';
-import { SimulatorGateway } from './simulator/simulator.gateway';
-import { SimulatorService } from './simulator/simulator.service';
+import { Module } from "@nestjs/common";
+import { ScheduleModule } from "@nestjs/schedule";
+import { SimulatorService } from "./simulator/simulator.service";
+import { SimulatorGateway } from "./simulator/simulator.gateway";
 
 @Module({
-  providers: [SimulatorGateway, SimulatorService],
+  imports: [ScheduleModule.forRoot()],
+  providers: [SimulatorService, SimulatorGateway],
 })
 export class AppModule {}
