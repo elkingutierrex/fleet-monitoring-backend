@@ -1,45 +1,28 @@
-import { Injectable } from '@nestjs/common';
-import { Server } from 'socket.io';
-
-interface Vehicle {
-  id: string;
-  lat: number;
-  lng: number;
-  status: 'OK' | 'FALLA';
-}
+import { Injectable } from "@nestjs/common";
+import { Interval } from "@nestjs/schedule";
 
 @Injectable()
 export class SimulatorService {
-  private vehicles: Vehicle[] = [];
-  public timeOut: number = 3000;
 
-  constructor() {
-    for (let i = 1; i <= 5; i++) {
-      this.vehicles.push({
-        id: `V${i}`,
-        lat: 10 + Math.random(),
-        lng: -84 + Math.random(),
-        status: 'OK',
-      });
-    }
+  private vehicles = [
+    { id: 1, lat: 10, lng: -84 },
+    { id: 2, lat: 10.1, lng: -84.1 },
+    { id: 3, lat: 9.9, lng: -84.05 },   
+    { id: 4, lat: 10.6, lng: -84.15 },
+    { id: 5, lat: 9.59, lng: -84.52 }
+  ];
+
+  @Interval(9000)
+  simulate() {
+    this.vehicles = this.vehicles.map(v => ({
+      ...v,
+      lat: v.lat + (Math.random() - 0.5) * 0.01,
+      lng: v.lng + (Math.random() - 0.5) * 0.01
+    }));
+    console.log("📡 Vehículos simulados:", this.vehicles);
   }
 
-  start(server: Server) {
-    setInterval(() => {
-      this.vehicles = this.vehicles.map((v) => {
-        const dx = (Math.random() - 0.5) * 0.01;
-        const dy = (Math.random() - 0.5) * 0.01;
-        const fail = Math.random() < 0.15;
-
-        return {
-          ...v,
-          lat: v.lat + dx,
-          lng: v.lng + dy,
-          status: fail ? 'FALLA' : 'OK',
-        };
-      });
-
-      server.emit('vehicle-positions', this.vehicles);
-    }, this.timeOut);
+  getVehicles() {
+    return this.vehicles;
   }
 }
