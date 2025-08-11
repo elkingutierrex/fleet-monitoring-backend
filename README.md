@@ -55,7 +55,7 @@ Provee datos actualizados de vehículos a través de WebSockets usando Socket.IO
   ```bash
     npm install
 
-2. Correr proyecto
+3. Correr proyecto
   ```bash
     npm run:dev
 
