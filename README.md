@@ -48,5 +48,12 @@ Provee datos actualizados de vehículos a través de WebSockets usando Socket.IO
 1. Clonar este repositorio:
 
    ```bash
-   git clone https://github.com/tu_usuario/fleet-monitoring-backend.git
+   git clone https://github.com/elkingutierrex/fleet-monitoring-backend.git
    cd fleet-monitoring-backend
+
+2. Correr proyecto
+  ```bash
+    npm run:dev
+
+## IMPORTANTE
+  Verificar que se encuentre corriendo en el puerto donde se configuro el frontend Normalmente es  EL PUERTO: http://localhost:3000
