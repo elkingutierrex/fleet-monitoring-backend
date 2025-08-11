@@ -63,3 +63,6 @@ Provee datos actualizados de vehículos a través de WebSockets usando Socket.IO
 
 ## IMPORTANTE
   Verificar que se encuentre corriendo en el puerto donde se configuro el frontend Normalmente es  EL PUERTO: http://localhost:3000
+
+## Contacto
+Cualquier duda o inquietud puede ser tratada al correo elkin.gutierrex@gmail.com
