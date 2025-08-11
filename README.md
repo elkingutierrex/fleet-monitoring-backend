@@ -40,7 +40,7 @@ Provee datos actualizados de vehículos a través de WebSockets usando Socket.IO
 - Node.js
 
 ## Requisitos Previos
-- Node.js instalado (versión recomendada 16+).  
+- Node.js instalado (versión recomendada v22.18.0).  
 - (Opcional) Base de datos o fuente de datos para vehículos.
 
 ## Instalación y Ejecución
@@ -50,6 +50,10 @@ Provee datos actualizados de vehículos a través de WebSockets usando Socket.IO
    ```bash
    git clone https://github.com/elkingutierrex/fleet-monitoring-backend.git
    cd fleet-monitoring-backend
+
+2. Instalacion
+  ```bash
+    npm install
 
 2. Correr proyecto
   ```bash
