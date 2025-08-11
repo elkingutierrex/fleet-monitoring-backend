@@ -51,12 +51,12 @@ Provee datos actualizados de vehículos a través de WebSockets usando Socket.IO
    git clone https://github.com/elkingutierrex/fleet-monitoring-backend.git
    cd fleet-monitoring-backend
 
-2. Instalación
+2. Instalación:
 
   ```bash
     npm install
 
-3. Correr proyecto
+3. Correr proyecto:
 
   ```bash
     npm run:dev 
